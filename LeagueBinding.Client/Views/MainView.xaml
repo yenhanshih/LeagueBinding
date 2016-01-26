@@ -1,0 +1,49 @@
+﻿<controls:MetroWindow x:Class="LeagueBinding.Client.Views.MainView"
+                      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                      xmlns:controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+                      xmlns:views="clr-namespace:LeagueBinding.Client.Views"
+                      xmlns:common="clr-namespace:LeagueBinding.Client.Common"
+                      xmlns:viewModels="clr-namespace:LeagueBinding.Client.ViewModels.Dialogs"
+                      xmlns:dialogs="clr-namespace:LeagueBinding.Client.Controls.Dialogs"
+                      DataContext="{Binding Source={common:Locate}, Path=MainViewModel}"
+                      Title="LeagueBinding" Height="550" Width="825"
+                      KeyUp="MainView_OnKeyUp"
+                      PreviewMouseDown="MainView_OnPreviewMouseDown">
+    <controls:MetroWindow.Resources>
+        <DataTemplate DataType="{x:Type viewModels:ConfirmFolderDialogViewModel}">
+            <dialogs:ConfirmFolderDialogView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewModels:CreatedDialogViewModel}">
+            <dialogs:CreatedDialogView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewModels:FileExistsDialogViewModel}">
+            <dialogs:FileExistsDialogView />
+        </DataTemplate>
+    </controls:MetroWindow.Resources>
+
+    <Grid x:Name="MainGrid" Margin="0 10 0 10" Focusable="True" FocusVisualStyle="{x:Null}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <ContentControl Panel.ZIndex="1" Grid.Row="0" Content="{Binding ModalManager.CurrentModal}" Visibility="{Binding ModalManager.IsModalOpen, Converter={StaticResource BooleanToVisibilityConverter}}" />
+
+        <controls:MetroAnimatedSingleRowTabControl Margin="10 0 10 0">
+            <controls:MetroAnimatedSingleRowTabControl.Items>
+                <controls:MetroTabItem Header="Select" IsSelected="{Binding IsSelectSelected, Mode=OneWayToSource}">
+                    <views:SelectBindingView />
+                </controls:MetroTabItem>
+                <controls:MetroTabItem Header="Add">
+                    <views:AddBindingView />
+                </controls:MetroTabItem>
+                <controls:MetroTabItem Header="Edit" IsSelected="{Binding IsEditSelected, Mode=OneWayToSource}">
+                    <views:EditBindingView />
+                </controls:MetroTabItem>
+                <controls:MetroTabItem Header="Settings">
+                    <views:SettingsView />
+                </controls:MetroTabItem>
+            </controls:MetroAnimatedSingleRowTabControl.Items>
+        </controls:MetroAnimatedSingleRowTabControl>
+    </Grid>
+</controls:MetroWindow>
