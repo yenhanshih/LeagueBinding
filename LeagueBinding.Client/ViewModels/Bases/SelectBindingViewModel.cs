@@ -1,7 +1,10 @@
 ﻿using System.Collections.Generic;
+using System.IO;
 using LeagueBinding.Client.Common;
 using LeagueBinding.Client.Manager.Interfaces;
+using LeagueBinding.Client.Properties;
 using LeagueBinding.Client.ViewModels.Bases.Interfaces;
+using LeagueBinding.Client.ViewModels.Dialogs.Interface;
 
 namespace LeagueBinding.Client.ViewModels.Bases
 {
@@ -10,6 +13,7 @@ namespace LeagueBinding.Client.ViewModels.Bases
         , ISelectBindingViewModel
     {
         private readonly IDataManager _dataManager;
+        private readonly IModalManager _modalManager;
 
         private string _selectedPageName;
         public string SelectedPageName
@@ -33,9 +37,10 @@ namespace LeagueBinding.Client.ViewModels.Bases
             }
         }
 
-        public SelectBindingViewModel(IDataManager dataManager)
+        public SelectBindingViewModel(IDataManager dataManager, IModalManager modalManager)
         {
             _dataManager = dataManager;
+            _modalManager = modalManager;
 
             PageNames = _dataManager.GetAllPageNames();
         }
@@ -47,9 +52,15 @@ namespace LeagueBinding.Client.ViewModels.Bases
             {
                 return _set ?? (_set = new RelayCommand(_ =>
                 {
-                    if (_dataManager.IsInstallationPathValid())
+                    if (_dataManager.IsInstallationPathValid()
+                        && File.Exists(Settings.Default.InstallationPath + "\\lol.launcher.admin.exe")
+                        && File.Exists(Settings.Default.InstallationPath + "\\lol.launcher.exe"))
                     {
                         _dataManager.ReplaceConfigFileWithSetting(SelectedPageName);
+                    }
+                    else
+                    {
+                        _modalManager.OpenModal(Ioc.Container.GetInstance<IConfirmFolderDialogViewModel>());
                     }
                 }, x => !string.IsNullOrEmpty(SelectedPageName)));
             }
