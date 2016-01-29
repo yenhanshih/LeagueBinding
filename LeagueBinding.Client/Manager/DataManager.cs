@@ -20,7 +20,7 @@ namespace LeagueBinding.Client.Manager
 
         public bool IsInstallationPathValid()
         {
-            return !string.IsNullOrEmpty(Settings.Default.InstallationPath) && File.Exists(Settings.Default.InstallationPath + "\\lol.launcher.exe");
+            return !string.IsNullOrEmpty(Settings.Default.InstallationPath);
         }
 
         public List<string> GetAllPageNames()
