@@ -6,6 +6,7 @@ namespace LeagueBinding.Client.Manager.Interfaces
     public interface IDataManager
     {
         bool FileExistInStorage(string file);
+        bool IsInstallationPathValid();
 
         List<string> GetAllPageNames();
         List<GameEvent> CreateCastSpellGameEventsResource();

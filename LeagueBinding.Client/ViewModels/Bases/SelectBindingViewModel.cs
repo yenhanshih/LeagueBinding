@@ -47,7 +47,10 @@ namespace LeagueBinding.Client.ViewModels.Bases
             {
                 return _set ?? (_set = new RelayCommand(_ =>
                 {
-                    _dataManager.ReplaceConfigFileWithSetting(SelectedPageName);
+                    if (_dataManager.IsInstallationPathValid())
+                    {
+                        _dataManager.ReplaceConfigFileWithSetting(SelectedPageName);
+                    }
                 }, x => !string.IsNullOrEmpty(SelectedPageName)));
             }
         }

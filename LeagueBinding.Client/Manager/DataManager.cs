@@ -18,8 +18,14 @@ namespace LeagueBinding.Client.Manager
             return File.Exists(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\LeagueBinding\\Pages\\" + file);
         }
 
+        public bool IsInstallationPathValid()
+        {
+            return !string.IsNullOrEmpty(Settings.Default.InstallationPath) && File.Exists(Settings.Default.InstallationPath + "\\lol.launcher.exe");
+        }
+
         public List<string> GetAllPageNames()
         {
+            Directory.CreateDirectory(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\LeagueBinding\\Pages");
             var list = Directory.GetFiles(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\LeagueBinding\\Pages\\").Select(Path.GetFileName).ToList();
             list.Insert(0, "Default");
             return list;

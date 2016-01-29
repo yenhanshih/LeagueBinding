@@ -86,7 +86,7 @@ namespace LeagueBinding.Client.Models
             }
         }
 
-        public bool IsLowerCaseLetter()
+        private bool IsLowerCaseLetter()
         {
             var charArray = _gameEventValue.ToCharArray();
             if (charArray.Length == 1)
@@ -96,7 +96,7 @@ namespace LeagueBinding.Client.Models
             return false;
         }
 
-        public bool IsSpecialChar()
+        private bool IsSpecialChar()
         {
             var charArray = _gameEventValue.ToCharArray();
             if (charArray.Length == 1)
@@ -106,7 +106,7 @@ namespace LeagueBinding.Client.Models
             return false;
         }
 
-        public bool IsShiftPressed()
+        private bool IsShiftPressed()
         {
             var charArray = _gameEventValue.ToCharArray();
             if (charArray.Length == 1)
