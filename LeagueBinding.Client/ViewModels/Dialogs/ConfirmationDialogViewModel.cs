@@ -4,15 +4,37 @@ using LeagueBinding.Client.ViewModels.Dialogs.Interface;
 
 namespace LeagueBinding.Client.ViewModels.Dialogs
 {
-    public class CreatedDialogViewModel
+    public class ConfirmationDialogViewModel
         : BaseViewModel
-        , ICreatedDialogViewModel
+        , IConfirmationDialogViewModel
     {
         private readonly IModalManager _modalManager;
 
-        public CreatedDialogViewModel(IModalManager modalManager)
+        public ConfirmationDialogViewModel(IModalManager modalManager)
         {
             _modalManager = modalManager;
+        }
+
+        private string _title;
+        public string Title
+        {
+            get { return _title; }
+            set
+            {
+                _title = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private string _body;
+        public string Body
+        {
+            get { return _body; }
+            set
+            {
+                _body = value;
+                OnPropertyChanged();
+            }
         }
 
         private RelayCommand _ok;

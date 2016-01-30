@@ -60,7 +60,9 @@ namespace LeagueBinding.Client.ViewModels.Bases
                     }
                     else
                     {
-                        _modalManager.OpenModal(Ioc.Container.GetInstance<IConfirmFolderDialogViewModel>());
+                        _modalManager.OpenModal(Ioc.Container.GetInstance<IConfirmationDialogViewModel>(),
+                            "Warning",
+                            "We cannot detect the League of Legends launcher in this folder, please make sure that the path provided is correct.");
                     }
                 }, x => !string.IsNullOrEmpty(SelectedPageName)));
             }

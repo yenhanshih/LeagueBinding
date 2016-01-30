@@ -48,19 +48,9 @@ namespace LeagueBinding.Client.Common
             get { return _container.GetInstance<ISettingsViewModel>(); }
         }
 
-        public IConfirmFolderDialogViewModel ConfirmFolderDialogViewModel
+        public IConfirmationDialogViewModel ConfirmationDialogViewModel
         {
-            get { return _container.GetInstance<IConfirmFolderDialogViewModel>(); }
-        }
-
-        public ICreatedDialogViewModel CreatedDialogViewModel
-        {
-            get { return _container.GetInstance<ICreatedDialogViewModel>(); }
-        }
-
-        public IFileExistsDialogViewModel FileExistsDialogViewModel
-        {
-            get { return _container.GetInstance<IFileExistsDialogViewModel>(); }
+            get { return _container.GetInstance<IConfirmationDialogViewModel>(); }
         }
     }
 }

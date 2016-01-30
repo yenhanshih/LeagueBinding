@@ -44,7 +44,9 @@ namespace LeagueBinding.Client.ViewModels.Bases
                     if (!File.Exists(dialog.SelectedPath + "\\lol.launcher.admin.exe") 
                         && !File.Exists(dialog.SelectedPath + "\\lol.launcher.exe"))
                     {
-                        _modalManager.OpenModal(Ioc.Container.GetInstance<IConfirmFolderDialogViewModel>());
+                        _modalManager.OpenModal(Ioc.Container.GetInstance<IConfirmationDialogViewModel>(),
+                            "Warning",
+                            "We cannot detect the League of Legends launcher in this folder, please make sure that the path provided is correct.");
                     }
                 }));
             }

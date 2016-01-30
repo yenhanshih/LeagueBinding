@@ -7,6 +7,7 @@ namespace LeagueBinding.Client.Manager.Interfaces
         IModalViewModel CurrentModal { get; }
         bool IsModalOpen { get; }
         void OpenModal(IModalViewModel viewModel);
+        void OpenModal(IConfirmationDialogViewModel viewModel, string title, string body);
         void CloseModal();
     }
 }

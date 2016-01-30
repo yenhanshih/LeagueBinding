@@ -28,9 +28,7 @@ namespace LeagueBinding.Client.Common
             container.Register<IAddBindingViewModel, AddBindingViewModel>(new PerContainerLifetime());
             container.Register<IEditBindingViewModel, EditBindingViewModel>(new PerContainerLifetime());
             container.Register<ISettingsViewModel, SettingsViewModel>(new PerContainerLifetime());
-            container.Register<IConfirmFolderDialogViewModel, ConfirmFolderDialogViewModel>(new PerContainerLifetime());
-            container.Register<ICreatedDialogViewModel, CreatedDialogViewModel>(new PerContainerLifetime());
-            container.Register<IFileExistsDialogViewModel, FileExistsDialogViewModel>(new PerContainerLifetime());
+            container.Register<IConfirmationDialogViewModel, ConfirmationDialogViewModel>(new PerContainerLifetime());
 
             return container;
         }

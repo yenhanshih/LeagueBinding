@@ -11,14 +11,8 @@
                       KeyUp="MainView_OnKeyUp"
                       PreviewMouseDown="MainView_OnPreviewMouseDown">
     <controls:MetroWindow.Resources>
-        <DataTemplate DataType="{x:Type viewModels:ConfirmFolderDialogViewModel}">
-            <dialogs:ConfirmFolderDialogView />
-        </DataTemplate>
-        <DataTemplate DataType="{x:Type viewModels:CreatedDialogViewModel}">
-            <dialogs:CreatedDialogView />
-        </DataTemplate>
-        <DataTemplate DataType="{x:Type viewModels:FileExistsDialogViewModel}">
-            <dialogs:FileExistsDialogView />
+        <DataTemplate DataType="{x:Type viewModels:ConfirmationDialogViewModel}">
+            <dialogs:ConfirmationDialogView />
         </DataTemplate>
     </controls:MetroWindow.Resources>
 

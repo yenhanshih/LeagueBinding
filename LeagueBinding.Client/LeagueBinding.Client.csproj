@@ -75,11 +75,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="Controls\Dialogs\FileExistsDialogView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Controls\Dialogs\CreatedDialogView.xaml">
+    <Page Include="Controls\Dialogs\ConfirmationDialogView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -111,10 +107,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\Dialogs\ConfirmFolderDialogView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="Views\SettingsView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -143,11 +135,8 @@
     <Compile Include="Common\Locate.cs" />
     <Compile Include="Common\NotifyPropertyChanged.cs" />
     <Compile Include="Common\RelayCommand.cs" />
-    <Compile Include="Controls\Dialogs\FileExistsDialogView.xaml.cs">
-      <DependentUpon>FileExistsDialogView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\Dialogs\CreatedDialogView.xaml.cs">
-      <DependentUpon>CreatedDialogView.xaml</DependentUpon>
+    <Compile Include="Controls\Dialogs\ConfirmationDialogView.xaml.cs">
+      <DependentUpon>ConfirmationDialogView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\ModalDialog.cs" />
     <Compile Include="Manager\DataManager.cs" />
@@ -165,10 +154,8 @@
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\Bases\EditBindingViewModel.cs" />
     <Compile Include="ViewModels\Bases\Interfaces\IAddBindingViewModel.cs" />
-    <Compile Include="ViewModels\Dialogs\ConfirmFolderDialogViewModel.cs" />
-    <Compile Include="ViewModels\Dialogs\FileExistsDialogViewModel.cs" />
-    <Compile Include="ViewModels\Dialogs\CreatedDialogViewModel.cs" />
-    <Compile Include="ViewModels\Dialogs\Interface\IConfirmFolderDialogViewModel.cs" />
+    <Compile Include="ViewModels\Dialogs\ConfirmationDialogViewModel.cs" />
+    <Compile Include="ViewModels\Dialogs\Interface\IConfirmationDialogViewModel.cs" />
     <Compile Include="ViewModels\Bases\Interfaces\IEditBindingViewModel.cs" />
     <Compile Include="ViewModels\Bases\Interfaces\IMainViewModel.cs" />
     <Compile Include="ViewModels\Bases\Interfaces\ISelectBindingViewModel.cs" />
@@ -176,12 +163,7 @@
     <Compile Include="ViewModels\Bases\SelectBindingViewModel.cs" />
     <Compile Include="ViewModels\Bases\MainViewModel.cs" />
     <Compile Include="ViewModels\Bases\SettingsViewModel.cs" />
-    <Compile Include="ViewModels\Dialogs\Interface\IFileExistsDialogViewModel.cs" />
-    <Compile Include="ViewModels\Dialogs\Interface\ICreatedDialogViewModel.cs" />
     <Compile Include="ViewModels\Dialogs\Interface\IModalViewModel.cs" />
-    <Compile Include="Controls\Dialogs\ConfirmFolderDialogView.xaml.cs">
-      <DependentUpon>ConfirmFolderDialogView.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\SettingsView.xaml.cs">
       <DependentUpon>SettingsView.xaml</DependentUpon>
     </Compile>

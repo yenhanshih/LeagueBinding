@@ -30,8 +30,18 @@ namespace LeagueBinding.Client.Manager
             }
         }
 
+        // For generic modal
         public void OpenModal(IModalViewModel viewModel)
         {
+            CurrentModal = viewModel;
+            IsModalOpen = true;
+        }
+
+        // For confirmation modal
+        public void OpenModal(IConfirmationDialogViewModel viewModel, string title, string body)
+        {
+            viewModel.Title = title;
+            viewModel.Body = body;
             CurrentModal = viewModel;
             IsModalOpen = true;
         }

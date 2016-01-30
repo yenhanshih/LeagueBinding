@@ -132,12 +132,16 @@ namespace LeagueBinding.Client.ViewModels.Bases
                 {
                     if (_dataManager.FileExistInStorage(PageName) || PageName == "Default")
                     {
-                        _modalManager.OpenModal(Ioc.Container.GetInstance<IFileExistsDialogViewModel>());
+                        _modalManager.OpenModal(Ioc.Container.GetInstance<IConfirmationDialogViewModel>(),
+                            "Error",
+                            "The page name you specified already exists, please try again with a different page name or edit the existing page.");
                     }
                     else
                     {
                         _dataManager.ExportSettings(CastSpellGameEvents, CastSpellQuickbinds, UseItemGameEvents, UseItemQuickbinds, PageName);
-                        _modalManager.OpenModal(Ioc.Container.GetInstance<ICreatedDialogViewModel>());
+                        _modalManager.OpenModal(Ioc.Container.GetInstance<IConfirmationDialogViewModel>(),
+                            "Info",
+                            "Your settings was successfully saved.");
                         ResetDefaults();
 
                     }

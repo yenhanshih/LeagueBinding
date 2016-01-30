@@ -1,8 +1,8 @@
 ﻿namespace LeagueBinding.Client.Controls.Dialogs
 {
-    public partial class FileExistsDialogView
+    public partial class ConfirmationDialogView
     {
-        public FileExistsDialogView()
+        public ConfirmationDialogView()
         {
             InitializeComponent();
         }
