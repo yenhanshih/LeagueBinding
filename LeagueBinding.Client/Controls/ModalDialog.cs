@@ -1,17 +1,16 @@
-﻿using System;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 
 namespace LeagueBinding.Client.Controls
 {
     public class ModalDialog : ContentControl
     {
-        public static readonly DependencyProperty TitleProperty = DependencyProperty.Register("Title", typeof (String),
-            typeof (ModalDialog), new PropertyMetadata(String.Empty));
+        public static readonly DependencyProperty TitleProperty = DependencyProperty.Register("Title", typeof (string),
+            typeof (ModalDialog), new PropertyMetadata(string.Empty));
 
-        public String Title
+        public string Title
         {
-            get { return (String) GetValue(TitleProperty); }
+            get { return GetValue(TitleProperty) as string; }
             set { SetValue(TitleProperty, value); }
         }
     }

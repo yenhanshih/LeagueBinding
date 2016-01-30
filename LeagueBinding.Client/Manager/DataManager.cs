@@ -188,7 +188,7 @@ namespace LeagueBinding.Client.Manager
             }
         }
 
-        public void DeletePageName(string pageName)
+        public void DeletePage(string pageName)
         {
             File.Delete(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\LeagueBinding\\Pages\\" + pageName);
         }

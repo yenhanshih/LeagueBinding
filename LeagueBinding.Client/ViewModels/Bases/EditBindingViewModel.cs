@@ -151,8 +151,8 @@ namespace LeagueBinding.Client.ViewModels.Bases
                     }
                     else
                     {
-                        // TODO: Initialize default values
-                        var quickBindSettings = _dataManager.ImportQuickbindSettings(SelectedPageName);
+                        PageName = _selectedPageName;
+
                         var gameEventSettings = _dataManager.ImportGameEventSettings(SelectedPageName);
                         CastSpellGameEvents =
                             gameEventSettings.Where(x => x.GameEventName <= GameEventNames.evtCastSpell4)
@@ -160,13 +160,15 @@ namespace LeagueBinding.Client.ViewModels.Bases
                         UseItemGameEvents =
                             gameEventSettings.Where(x => x.GameEventName >= GameEventNames.evtUseItem1)
                                                          .ToList();
+
+                        var quickBindSettings = _dataManager.ImportQuickbindSettings(SelectedPageName);
                         CastSpellQuickbinds =
                             quickBindSettings.Where(x => x.QuickbindName <= QuickbindNames.evtCastSpell4smart)
                                                          .ToList();
-
                         UseItemQuickbinds =
                             quickBindSettings.Where(x => x.QuickbindName >= QuickbindNames.evtUseItem1smart)
                                                          .ToList();
+
                         IsEditMode = true;
                     }
                 }, x => !string.IsNullOrEmpty(SelectedPageName)));
@@ -180,7 +182,10 @@ namespace LeagueBinding.Client.ViewModels.Bases
             {
                 return _delete ?? (_delete = new RelayCommand(_ =>
                 {
-                    if (_dataManager.FileExistInStorage(SelectedPageName)) _dataManager.DeletePageName(SelectedPageName);
+                    if (_dataManager.FileExistInStorage(SelectedPageName))
+                    {
+                        _dataManager.DeletePage(SelectedPageName);
+                    }
                     PageNames = _dataManager.GetAllPageNames();
                 }, x => !string.IsNullOrEmpty(SelectedPageName)));
             }

@@ -18,6 +18,6 @@ namespace LeagueBinding.Client.Manager.Interfaces
 
         void ExportSettings(List<GameEvent> castSpellGameEvents, List<Quickbind> quickbinds, List<GameEvent> useItemGameEvents, List<Quickbind> useItemQuickbinds, string pageName);
         void ReplaceConfigFileWithSetting(string pageName);
-        void DeletePageName(string pageName);
+        void DeletePage(string pageName);
     }
 }

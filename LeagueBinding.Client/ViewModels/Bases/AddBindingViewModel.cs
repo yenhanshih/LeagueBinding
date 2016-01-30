@@ -138,9 +138,22 @@ namespace LeagueBinding.Client.ViewModels.Bases
                     {
                         _dataManager.ExportSettings(CastSpellGameEvents, CastSpellQuickbinds, UseItemGameEvents, UseItemQuickbinds, PageName);
                         _modalManager.OpenModal(Ioc.Container.GetInstance<ICreatedDialogViewModel>());
+                        ResetDefaults();
+
                     }
                 }, x => !string.IsNullOrEmpty(PageName)));
             }
+        }
+
+        private void ResetDefaults()
+        {
+            PageName = null;
+
+            CastSpellGameEvents = _dataManager.CreateCastSpellGameEventsResource();
+            CastSpellQuickbinds = _dataManager.CreateCastSpellQuickbindsResource();
+
+            UseItemGameEvents = _dataManager.CreateUseItemGameEventsResource();
+            UseItemQuickbinds = _dataManager.CreateUseItemQuickbindsResource();
         }
     }
 }
