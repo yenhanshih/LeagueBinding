@@ -18,7 +18,7 @@ namespace LeagueBinding.Client.ViewModels.Bases
                 if (value)
                 {
                     var model = Ioc.Container.GetInstance<ISelectBindingViewModel>();
-                    model.PageNames = _dataManager.GetAllPageNames();
+                    model.PageNames = _dataManager.GetAllPageNames().ToList();
                 }
             }
         }
