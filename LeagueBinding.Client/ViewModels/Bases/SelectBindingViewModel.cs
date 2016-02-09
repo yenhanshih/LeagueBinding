@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using LeagueBinding.Client.Common;
 using LeagueBinding.Client.Manager.Interfaces;
 using LeagueBinding.Client.Properties;
@@ -42,7 +43,7 @@ namespace LeagueBinding.Client.ViewModels.Bases
             _dataManager = dataManager;
             _modalManager = modalManager;
 
-            PageNames = _dataManager.GetAllPageNames();
+            PageNames = _dataManager.GetAllPageNames().ToList();
         }
 
         private RelayCommand _set;

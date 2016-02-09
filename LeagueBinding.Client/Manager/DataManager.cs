@@ -23,7 +23,7 @@ namespace LeagueBinding.Client.Manager
             return !string.IsNullOrEmpty(Settings.Default.InstallationPath);
         }
 
-        public List<string> GetAllPageNames()
+        public IList<string> GetAllPageNames()
         {
             Directory.CreateDirectory(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\LeagueBinding\\Pages");
             var list = Directory.GetFiles(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\LeagueBinding\\Pages\\").Select(Path.GetFileName).ToList();
@@ -31,7 +31,7 @@ namespace LeagueBinding.Client.Manager
             return list;
         }
 
-        public List<GameEvent> CreateCastSpellGameEventsResource()
+        public IList<GameEvent> CreateCastSpellGameEventsResource()
         {
             return new List<GameEvent>
                 {
@@ -42,7 +42,7 @@ namespace LeagueBinding.Client.Manager
                 };
         }
 
-        public List<Quickbind> CreateCastSpellQuickbindsResource()
+        public IList<Quickbind> CreateCastSpellQuickbindsResource()
         {
             return new List<Quickbind>
                 {
@@ -53,7 +53,7 @@ namespace LeagueBinding.Client.Manager
                 };
         }
 
-        public List<GameEvent> CreateUseItemGameEventsResource()
+        public IList<GameEvent> CreateUseItemGameEventsResource()
         {
             return new List<GameEvent>
                 {
@@ -66,7 +66,7 @@ namespace LeagueBinding.Client.Manager
                 };
         }
 
-        public List<Quickbind> CreateUseItemQuickbindsResource()
+        public IList<Quickbind> CreateUseItemQuickbindsResource()
         {
             return new List<Quickbind>
                 {
@@ -79,7 +79,7 @@ namespace LeagueBinding.Client.Manager
                 };
         }
 
-        public List<Quickbind> ImportQuickbindSettings(string pageName)
+        public IList<Quickbind> ImportQuickbindSettings(string pageName)
         {
             var quickbinds = new List<Quickbind>();
             var pathInfo = new FileInfo(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\LeagueBinding\\Pages\\");
@@ -106,7 +106,7 @@ namespace LeagueBinding.Client.Manager
             return quickbinds;
         }
 
-        public List<GameEvent> ImportGameEventSettings(string pageName)
+        public IList<GameEvent> ImportGameEventSettings(string pageName)
         {
             var gameEvents = new List<GameEvent>();
             var pathInfo = new FileInfo(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\LeagueBinding\\Pages\\");
@@ -141,7 +141,7 @@ namespace LeagueBinding.Client.Manager
             return gameEvents;
         }
 
-        public void ExportSettings(List<GameEvent> castSpellGameEvents, List<Quickbind> castSpellQuickbinds, List<GameEvent> useItemGameEvents, List<Quickbind> useItemQuickbinds, string pageName)
+        public void ExportSettings(IList<GameEvent> castSpellGameEvents, IList<Quickbind> castSpellQuickbinds, IList<GameEvent> useItemGameEvents, IList<Quickbind> useItemQuickbinds, string pageName)
         {
             var pathInfo = new FileInfo(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\LeagueBinding\\Pages\\");
             if (pathInfo.Directory != null && !pathInfo.Directory.Exists && pathInfo.DirectoryName != null)

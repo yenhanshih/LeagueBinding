@@ -1,4 +1,5 @@
-﻿using LeagueBinding.Client.Common;
+﻿using System.Linq;
+using LeagueBinding.Client.Common;
 using LeagueBinding.Client.Manager.Interfaces;
 using LeagueBinding.Client.Models;
 using NUnit.Framework;
@@ -16,7 +17,7 @@ namespace LeagueBinding.Client.Tests.Manager
             var events = sut.CreateCastSpellGameEventsResource();
 
             Assert.AreEqual(events.Count, 4);
-            Assert.IsTrue(events.TrueForAll(_ => _.GetType() == typeof(GameEvent)));
+            Assert.IsTrue(events.All(_ => _.GetType() == typeof(GameEvent)));
         }
 
         [Test]
@@ -27,7 +28,7 @@ namespace LeagueBinding.Client.Tests.Manager
             var events = sut.CreateCastSpellQuickbindsResource();
 
             Assert.AreEqual(events.Count, 4);
-            Assert.IsTrue(events.TrueForAll(_ => _.GetType() == typeof(Quickbind)));
+            Assert.IsTrue(events.All(_ => _.GetType() == typeof(Quickbind)));
         }
 
         [Test]
@@ -38,7 +39,7 @@ namespace LeagueBinding.Client.Tests.Manager
             var events = sut.CreateUseItemGameEventsResource();
 
             Assert.AreEqual(events.Count, 6);
-            Assert.IsTrue(events.TrueForAll(_ => _.GetType() == typeof(GameEvent)));
+            Assert.IsTrue(events.All(_ => _.GetType() == typeof(GameEvent)));
         }
 
         [Test]
@@ -49,7 +50,7 @@ namespace LeagueBinding.Client.Tests.Manager
             var events = sut.CreateUseItemQuickbindsResource();
 
             Assert.AreEqual(events.Count, 6);
-            Assert.IsTrue(events.TrueForAll(_ => _.GetType() == typeof(Quickbind)));
+            Assert.IsTrue(events.All(_ => _.GetType() == typeof(Quickbind)));
         }
     }
 }

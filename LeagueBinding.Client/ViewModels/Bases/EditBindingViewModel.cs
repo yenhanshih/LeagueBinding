@@ -135,7 +135,7 @@ namespace LeagueBinding.Client.ViewModels.Bases
             _dataManager = dataManager;
             _modalManager = modalManager;
 
-            PageNames = _dataManager.GetAllPageNames();
+            PageNames = _dataManager.GetAllPageNames().ToList();
         }
 
         private RelayCommand _edit;
@@ -186,7 +186,7 @@ namespace LeagueBinding.Client.ViewModels.Bases
                     {
                         _dataManager.DeletePage(SelectedPageName);
                     }
-                    PageNames = _dataManager.GetAllPageNames();
+                    PageNames = _dataManager.GetAllPageNames().ToList();
                 }, x => !string.IsNullOrEmpty(SelectedPageName)));
             }
         }

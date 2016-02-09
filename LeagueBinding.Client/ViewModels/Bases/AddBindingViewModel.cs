@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using LeagueBinding.Client.Common;
 using LeagueBinding.Client.Manager.Interfaces;
 using LeagueBinding.Client.Models;
@@ -100,11 +101,11 @@ namespace LeagueBinding.Client.ViewModels.Bases
             _dataManager = dataManager;
             _modalManager = modalManager;
 
-            CastSpellGameEvents = _dataManager.CreateCastSpellGameEventsResource();
-            CastSpellQuickbinds = _dataManager.CreateCastSpellQuickbindsResource();
+            CastSpellGameEvents = _dataManager.CreateCastSpellGameEventsResource().ToList();
+            CastSpellQuickbinds = _dataManager.CreateCastSpellQuickbindsResource().ToList();
 
-            UseItemGameEvents = _dataManager.CreateUseItemGameEventsResource();
-            UseItemQuickbinds = _dataManager.CreateUseItemQuickbindsResource();
+            UseItemGameEvents = _dataManager.CreateUseItemGameEventsResource().ToList();
+            UseItemQuickbinds = _dataManager.CreateUseItemQuickbindsResource().ToList();
         }
 
         private RelayCommand _selectGameEvent;
@@ -153,11 +154,11 @@ namespace LeagueBinding.Client.ViewModels.Bases
         {
             PageName = null;
 
-            CastSpellGameEvents = _dataManager.CreateCastSpellGameEventsResource();
-            CastSpellQuickbinds = _dataManager.CreateCastSpellQuickbindsResource();
+            CastSpellGameEvents = _dataManager.CreateCastSpellGameEventsResource().ToList();
+            CastSpellQuickbinds = _dataManager.CreateCastSpellQuickbindsResource().ToList();
 
-            UseItemGameEvents = _dataManager.CreateUseItemGameEventsResource();
-            UseItemQuickbinds = _dataManager.CreateUseItemQuickbindsResource();
+            UseItemGameEvents = _dataManager.CreateUseItemGameEventsResource().ToList();
+            UseItemQuickbinds = _dataManager.CreateUseItemQuickbindsResource().ToList();
         }
     }
 }

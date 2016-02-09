@@ -1,4 +1,5 @@
-﻿using LeagueBinding.Client.Common;
+﻿using System.Linq;
+using LeagueBinding.Client.Common;
 using LeagueBinding.Client.Manager.Interfaces;
 using LeagueBinding.Client.ViewModels.Bases.Interfaces;
 
@@ -29,7 +30,7 @@ namespace LeagueBinding.Client.ViewModels.Bases
                 if (value)
                 {
                     var model = Ioc.Container.GetInstance<IEditBindingViewModel>();
-                    model.PageNames = _dataManager.GetAllPageNames();
+                    model.PageNames = _dataManager.GetAllPageNames().ToList();
                 }
             }
         }
