@@ -214,8 +214,7 @@ namespace LeagueBinding.Client.ViewModels.Bases
             {
                 return _save ?? (_save = new RelayCommand(_ =>
                 {
-                    // TODO: Need to remove file exist in storage check to save into existing file
-                    if (_dataManager.FileExistInStorage(PageName) || PageName == "Default")
+                    if (PageName == "Default")
                     {
                         _modalManager.OpenModal(Ioc.Container.GetInstance<IConfirmationDialogViewModel>(),
                             "Error",
@@ -227,7 +226,7 @@ namespace LeagueBinding.Client.ViewModels.Bases
                         _modalManager.OpenModal(Ioc.Container.GetInstance<IConfirmationDialogViewModel>(),
                             "Info",
                             "Your settings was successfully saved.");
-                        // TODO: Reset default and close edit mode
+                        ResetEditMode();
                     }
                 }, x => !string.IsNullOrEmpty(PageName)));
             }
@@ -240,13 +239,18 @@ namespace LeagueBinding.Client.ViewModels.Bases
             {
                 return _cancel ?? (_cancel = new RelayCommand(_ =>
                 {
-                    CastSpellGameEvents = null;
-                    UseItemGameEvents = null;
-                    CastSpellQuickbinds = null;
-                    UseItemQuickbinds = null;
-                    IsEditMode = false;
+                    ResetEditMode();
                 }));
             }
+        }
+
+        private void ResetEditMode()
+        {
+            CastSpellGameEvents = null;
+            UseItemGameEvents = null;
+            CastSpellQuickbinds = null;
+            UseItemQuickbinds = null;
+            IsEditMode = false;
         }
     }
 }
